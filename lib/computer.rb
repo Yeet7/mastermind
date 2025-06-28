@@ -1,13 +1,25 @@
-# Create class for computer player.
-# This class will generate a random code for the game.
-# It will also be able to provide feedback on the player's guesses.
+require_relative("board")
 
-# The computer will generate a random code of 4 colors from a set of 6 colors.
-# The colors are represented by letters: R, G, B, Y, O, P (Red, Green, Blue, Yellow, Orange, Purple).
-
-# Example usage:
-# computer = Computer.new
-# computer.generate_code
+# Creates computer
 class Computer
-  def initialize(args); end
+  def self.generate_choices(board)
+    board.each_with_index do |_, index|
+      rand_num = rand(6)
+      board[index] = case rand_num
+                     when 0...1
+                       "red"
+                     when 1..2
+                       "orange"
+                     when 2..3
+                       "yelllow"
+                     when 3..4
+                       "green"
+                     when 4..5
+                       "blue"
+                     else
+                       "purple"
+                     end
+    end
+    board
+  end
 end
