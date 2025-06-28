@@ -11,7 +11,7 @@ class Computer
                      when 1..2
                        "orange"
                      when 2..3
-                       "yelllow"
+                       "yellow"
                      when 3..4
                        "green"
                      when 4..5
