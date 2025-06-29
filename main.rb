@@ -12,11 +12,21 @@ module Game
     def play_game
       board = Board.new
 
-      # puts Computer.generate_choices(board.board_grid)
+      puts "Would you like to *guess* or be the *mastermind?*"
+      player_role = gets.chomp
+
+      if player_role == "guess"
+        player_guess(board)
+      elsif player_role == "mastermind"
+        player_mastermind(board)
+      end
+    end
+
+    def player_guess(board)
       Computer.generate_choices(board.board_grid)
       (0...12).each do |i|
         puts "Round #{i + 1}!"
-        guess = Player.guess
+        guess = Player.colors
 
         puts board.compare_to_board(board.board_grid, guess)
 
@@ -25,6 +35,11 @@ module Game
           break
         end
       end
+    end
+
+    def player_mastermind(board)
+      board.board_grid = Player.colors
+      puts board.board_grid
     end
 
     def winner?(board, guess)

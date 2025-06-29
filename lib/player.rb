@@ -6,7 +6,7 @@ class Player
 
   attr_accessor :prev_guess
 
-  def self.guess
+  def self.colors
     guess = Array.new(4, "")
     (0...4).each do |i|
       print "Please enter guess #{i + 1}: "
